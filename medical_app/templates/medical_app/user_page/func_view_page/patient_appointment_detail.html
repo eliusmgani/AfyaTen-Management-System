@@ -1,0 +1,68 @@
+{% extends "medical_app/user_page/receptionist_dashboard/receptionist_dashboard.html" %}
+{% load static %}
+
+
+{% block admin_list_views %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="card-deck">
+                <div class="card">
+                  {% comment %} <img src="card1-image.jpg" class="card-img-top" alt="Card 1 Image"> {% endcomment %}
+                  <div class="card-body">
+                    <h5 class="card-title">Card 1 Title</h5>
+                    <p class="card-text">Card 1 Description</p>
+                    <a href="#" class="btn btn-primary">Card 1 Button</a>
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-title">Card 1 Row 2 Title</h6>
+                    <p class="card-text">Card 1 Row 2 Description</p>
+                    <a href="#" class="btn btn-secondary">Card 1 Row 2 Button</a>
+                  </div>
+                </div>
+                <div class="card">
+                  {% comment %} <img src="card2-image.jpg" class="card-img-top" alt="Card 2 Image"> {% endcomment %}
+                  <div class="card-body">
+                    <h5 class="card-title">Card 2 Title</h5>
+                    <p class="card-text">Card 2 Description</p>
+                    <a href="#" class="btn btn-primary">Card 2 Button</a>
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-title">Card 2 Row 2 Title</h6>
+                    <p class="card-text">Card 2 Row 2 Description</p>
+                    <a href="#" class="btn btn-secondary">Card 2 Row 2 Button</a>
+                  </div>
+                </div>
+                <div class="card">
+                  {% comment %} <img src="card3-image.jpg" class="card-img-top" alt="Card 3 Image"> {% endcomment %}
+                  <div class="card-body">
+                    <h5 class="card-title">Card 3 Title</h5>
+                    <p class="card-text">Card 3 Description</p>
+                    <a href="#" class="btn btn-primary">Card 3 Button</a>
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-title">Card 3 Row 2 Title</h6>
+                    <p class="card-text">Card 3 Row 2 Description</p>
+                    <a href="#" class="btn btn-secondary">Card 3 Row 2 Button</a>
+                  </div>
+                </div>
+              </div>              
+            
+            <div class="col-md-12">
+                <div class="card">
+                  <div class="card card-warning">
+                    <!--card header-->
+                    <div class="card-header">
+                      <center><h1 class="card-title"><strong>Patient Appointment Detail<strong></h1></center>
+                    </div>
+                    <!-- /.card-header -->
+                    <!--card body-->
+                    <div class="card-body table-responsive p-0">
+                        
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock admin_list_views %}

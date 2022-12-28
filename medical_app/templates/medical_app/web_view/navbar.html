@@ -1,0 +1,25 @@
+{% load static %}
+
+
+  <nav id="navbar" class="navbar order-last order-lg-0">
+    <ul>
+      <li><a class="nav-link scrollto " href="#hero">Home</a></li>
+      {% comment %} <li><a class="nav-link scrollto" href="#about">About</a></li> {% endcomment %}
+      <li><a class="nav-link scrollto" href="#services">Services</a></li>
+      <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
+      <li><a class="nav-link scrollto" href="#departments">Departments</a></li>
+      <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+      {% if user.is_authenticated %}
+        <li > <a class="nav-link scrollto">Hi {{ user.username }}! </a></li>
+        <li>
+          <a class="nav-link scrollto" href="{% url 'logout' %}">logout</a>
+        </li>
+      {% else %}
+          <li>
+            <a class="nav-link scrollto" href="{% url 'login' %}">login</a>
+          </li>
+      {% endif %}
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+  </nav><!-- .navbar -->
+

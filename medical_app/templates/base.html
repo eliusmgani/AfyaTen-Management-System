@@ -1,0 +1,70 @@
+{% comment %} {% load static %} {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Mgani Medical Care</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="static/web_view/assets/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="static/web_view/assets/animate.css/animate.min.css" rel="stylesheet">
+  <link href="static/web_view/assets/aos/aos.css" rel="stylesheet">
+  <link href="static/web_view/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/web_view/assets/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/web_view/assets/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/web_view/assets/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="static/web_view/assets/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/web_view/css/style.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+  {% comment %} <div id="preloader"></div> {% endcomment %}
+  <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+    
+          <a href="/" class="logo me-auto"><img src="static/web_view/img/medical_care.png" alt="" ></a>
+
+          {% include "medical_app/web_view/navbar.html" %}
+
+    
+        </div>
+  </header>
+  
+
+  <main id="main">
+
+    {% block content %} {% endblock content %}
+
+  </main>
+
+  
+  <footer id="footer">
+    {% include "medical_app/web_view/footer.html" %}
+  </footer>
+
+  <script src="static/web_view/assets/purecounter/purecounter_vanilla.js"></script>
+  <script src="static/web_view/assets/aos/aos.js"></script>
+  <script src="static/web_view/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/web_view/assets/glightbox/js/glightbox.min.js"></script>
+  <script src="static/web_view/assets/swiper/swiper-bundle.min.js"></script>
+  {% comment %} <script src="static/web_view/assets/php-email-form/validate.js"></script> {% endcomment %}
+
+  <!-- Template Main JS File -->
+  <script src="static/web_view/js/main.js"></script>
+
+</body>
+
+</html>

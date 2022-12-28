@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block content %}
+      {% include 'medical_app/web_view/welcome_section.html' %}
+      {% comment %} {% include "medical_app/web_view/feature.html" %} {% endcomment %}
+      
+      {% comment %} {% include "medical_app/web_view/counts.html" %} {% endcomment %}
+      {% include "medical_app/web_view/services.html" %}
+      {% include "medical_app/web_view/practitioners.html" %}
+      {% comment %} {% include "medical_app/web_view/appointment_form.html" %} {% endcomment %}
+      {% include "medical_app/web_view/departments.html" %}
+      {% include "medical_app/web_view/contact_us.html" %}
+
+
+{% endblock content %}
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+{% load static %}
+
+<nav class="sidebar-nav">
+    <ul id="sidebarnav">
+        <li class="sidebar-item"> 
+            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="{% url 'admin-dashboard' %}" aria-expanded="false"><i class="me-3 far fa-clock fa-fw"
+                    aria-hidden="true"></i><span class="hide-menu">Dashboard</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="{% url 'practitioner-patient' %}" aria-expanded="false"><i class="me-3 fa fa-table"
+                    aria-hidden="true"></i><span class="hide-menu">Patient</span>
+            </a>
+        </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                href="#" aria-expanded="false"><i class="me-3 fa fa-table"
+                    aria-hidden="true"></i><span class="hide-menu">Patient Encounters</span>
+            </a>
+        </li>
+    </ul>
+
+</nav>

@@ -1,0 +1,28 @@
+{% load static %}
+    
+<!-- ======= Services Section ======= -->
+<section id="services" class="services">
+<div class="container" data-aos="fade-up" style="margin-bottom: 30px">
+    <div class="section-title">
+        <h2>Services</h2>
+        <p style="margin: 30px">
+            Our <b>medical care</b> provides clinical services, medical services, nursing services and operational services for the betterment of our people.<br>
+            The following are some of the services provided within our medical care
+            
+        </p>
+    </div>
+
+    <div class="row">
+        {% for service in services %}
+            <div class="card" style="width: 14rem;" data-aos="zoom-in" data-aos-delay="100">
+                <img src="{{service.image.url}}" width="120px" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{service.service_name}}</h5>
+                    <small>Department: {{service.department}}</small>
+                    {% comment %} <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> {% endcomment %}
+                    {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
+                </div>
+            </div>
+        {% endfor %}
+</div>
+</section><!-- End Services Section -->
