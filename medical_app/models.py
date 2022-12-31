@@ -44,21 +44,21 @@ class CustomUser(AbstractUser):
 
 
 class PriceList(models.Model):
-    price_list_name = models.CharField(max_length=20)
+    price_list_name = models.CharField(primary_key=True, max_length=50)
 
     def __str__(self):
         return '{}'.format(self.price_list_name)
 
 
 class ItemGroup(models.Model):
-    group_name = models.CharField(max_length=20)
+    group_name = models.CharField(primary_key=True, max_length=50)
 
     def __str__(self):
         return '{}'.format(self.group_name)
 
 
 class Item(models.Model):
-    item_code = models.CharField(max_length=50)
+    item_code = models.CharField(primary_key=True, max_length=50)
     item_name = models.CharField(max_length=50)
     description = models.TextField()
     item_group = models.ForeignKey(ItemGroup, on_delete=models.DO_NOTHING)
@@ -68,14 +68,14 @@ class Item(models.Model):
 
 
 class ItemPrice(models.Model):
+    id = models.AutoField(primary_key=True)
     item_code = models.ForeignKey(Item, on_delete=models.CASCADE)
     price_list = models.ForeignKey(PriceList, on_delete=models.CASCADE)
     price_list_rate = models.FloatField()
 
 
 class Patient(models.Model):
-    id = models.AutoField(primary_key=True)
-    full_name = models.CharField(max_length=50)
+    full_name = models.CharField(primary_key=True, max_length=50)
     email = models.EmailField(max_length=50)
     mobile_no = models.CharField(max_length=50)
     gender = models.CharField(max_length=20)
@@ -92,16 +92,16 @@ class InsuranceRecord(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.DO_NOTHING)
     insurance_company = models.CharField(max_length=50)
     covarage_plan = models.CharField(max_length=50)
-    cardno = models.CharField(max_length=20)
+    cardno = models.CharField(primary_key=True, max_length=20)
 
     def __str__(self):
         return '{} - {}'.format(self.patient, self.insurance_company)
 
 
 class Receptionist(models.Model):
-    id = models.AutoField(primary_key=True)
+    # id = models.AutoField(primary_key=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    full_name = models.CharField(max_length=50)
+    full_name = models.CharField(primary_key=True, max_length=50)
     date_of_birth = models.DateField()
     profile_pic = models.ImageField(upload_to='media/img/receptionist', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -113,9 +113,9 @@ class Receptionist(models.Model):
 
 
 class Nurse(models.Model):
-    id = models.AutoField(primary_key=True)
+    # id = models.AutoField(primary_key=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    full_name = models.CharField(max_length=50)
+    full_name = models.CharField(primary_key=True, max_length=50)
     date_of_birth = models.DateField()
     profile_pic = models.ImageField(upload_to='media/img/nurse', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -126,7 +126,7 @@ class Nurse(models.Model):
 
 
 class MedicalDepartment(models.Model):
-    department_name = models.CharField(max_length=50)
+    department_name = models.CharField(primary_key=True, max_length=50)
     description = models.TextField(blank=True)
 
     def __str__(self):
@@ -134,19 +134,20 @@ class MedicalDepartment(models.Model):
 
 
 class PractitionerSpeciality(models.Model):
-    speciliaty_name = models.CharField(max_length=50)
+    speciliaty_name = models.CharField(primary_key=True, max_length=50)
 
     def __str__(self):
         return '{}'.format(self.speciliaty_name)
 
 
 class Practitioner(models.Model):
-    id = models.AutoField(primary_key=True)
+    # id = models.AutoField(primary_key=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    full_name = models.CharField(max_length=50)
+    full_name = models.CharField(primary_key=True, max_length=50)
     date_of_birth = models.DateField()
     medical_department = models.ForeignKey(MedicalDepartment, on_delete=models.DO_NOTHING)
     speciality = models.ForeignKey(PractitionerSpeciality, on_delete=models.DO_NOTHING)
+    consultation_item = models.ForeignKey(Item, on_delete=models.DO_NOTHING)
     profile_pic = models.ImageField(upload_to='media/img/practitioner')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -198,7 +199,8 @@ class PatientAppointment(models.Model):
     cardno = models.CharField(max_length=20, blank=True, null=True)
     insurance_company = models.CharField(max_length=50, blank=True, null=True)
     authorization_no = models.CharField(max_length=50, blank=True, null=True)
-    invoice_no = models.ForeignKey(SalesInvoice, on_delete=models.DO_NOTHING, blank=True, null=True)
+    invoice_no = models.CharField(max_length=50, blank=True, null=True)
+    billing_item = models.CharField(max_length=50, blank=True, null=True)
     amount = models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

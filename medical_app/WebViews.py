@@ -11,10 +11,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def home(request):
-    if request.user.is_authenticated:
-        return check_user_type(request)
+    # if request.user.is_authenticated:
+    #     return redirect("func-view-dashboard")
     print(request)
     obj = get_details()
+    print("\n\n\n\n")
+    print(obj)
+    print("\n\n\n\n")
     return render(request, "medical_app/web_view/home.html", {
         "services": obj.get("services"),
         "practitioners": obj.get("practitioners"),
@@ -28,13 +31,10 @@ def login_user(request):
         password = request.POST['password']
 
         user = authenticate(username=username, password=password)
-        print(password)
-        print(username)
-        print(user)
 
         if user is not None:
             login(request, user)
-            return redirect("home")
+            return redirect("func-view-dashboard")
         else:
             messages.info(request, 'Invalid Username or Password')
             return redirect('login')
@@ -95,25 +95,8 @@ class ReceptionistListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Receptionist.objects.all()
 
-class PatientListView(LoginRequiredMixin, ListView):
-    """Get list of All Patients"""
 
-    Model = Patient
-    context_object_name = "patients"
-    template_name = "medical_app/user_page/admin_dashboard/patient_list.html"
 
-    def get_queryset(self):
-        return Patient.objects.all()
-
-class AppointmentListView(LoginRequiredMixin, ListView):
-    """Get list of All Patient Appointments"""
-
-    Model = PatientAppointment
-    context_object_name = "appointments"
-    template_name = "medical_app/user_page/admin_dashboard/appointment_list.html"
-
-    def get_queryset(self):
-        return PatientAppointment.objects.all()
 
 class AdminVitalListView(LoginRequiredMixin, ListView):
     """Get list of All Vital Signs"""
@@ -185,15 +168,15 @@ class ItemPriceListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return ItemPrice.objects.all()
 
-class AppointmentPatientListView(LoginRequiredMixin, ListView):
-    """Get list of All Patients in Receptionist Dashboard"""
+# class AppointmentPatientListView(LoginRequiredMixin, ListView):
+#     """Get list of All Patients in Receptionist Dashboard"""
 
-    Model = Patient
-    context_object_name = "patients"
-    template_name = "medical_app/user_page/receptionist_dashboard/patient_list.html"
+#     Model = Patient
+#     context_object_name = "patients"
+#     template_name = "medical_app/user_page/receptionist_dashboard/patient_list.html"
 
-    def get_queryset(self):
-        return Patient.objects.all()
+#     def get_queryset(self):
+#         return Patient.objects.all()
 
 class VitalPatientListView(LoginRequiredMixin, ListView):
     """Get list of All Patients in Nurse Dashboard"""
@@ -225,30 +208,30 @@ class ServiceListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Service.objects.all()
 
-def check_user_type(request):
-    if request.user.user_type == "Practitioner":
-        return redirect("practitioner-dashboard")
+# def check_user_type(request):
+#     if request.user.user_type == "Practitioner":
+#         return redirect("practitioner-dashboard")
 
-    elif request.user.user_type == "Nurse":
-        return redirect("nurse-dashboard")
+#     elif request.user.user_type == "Nurse":
+#         return redirect("nurse-dashboard")
 
-    elif request.user.user_type == "Receptionist":
-        return redirect("receptionist-dashboard")
+#     elif request.user.user_type == "Receptionist":
+#         return redirect("receptionist-dashboard")
 
-    else:
-        return redirect("admin-dashboard")
+#     else:
+#         return redirect("admin-dashboard")
 
-def admin_dashboard(request):
-    return render(request, "medical_app/user_page/admin_dashboard/admin_dashboard.html")
+# def admin_dashboard(request):
+#     return render(request, "medical_app/user_page/admin_dashboard/admin_dashboard.html")
 
-def practitioner_dashboard(request):
-    return render(request, "medical_app/user_page/practitioner_dashboard/practitioner_dashboard.html")
+# def practitioner_dashboard(request):
+#     return render(request, "medical_app/user_page/practitioner_dashboard/practitioner_dashboard.html")
     
-def nurse_dashboard(request):
-    return render(request, "medical_app/user_page/nurse_dashboard/nurse_dashboard.html")
+# def nurse_dashboard(request):
+#     return render(request, "medical_app/user_page/nurse_dashboard/nurse_dashboard.html")
 
-def receptionist_dashboard(request):
-    return render(request, "medical_app/user_page/receptionist_dashboard/receptionist_dashboard.html")
+# def receptionist_dashboard(request):
+#     return render(request, "medical_app/user_page/receptionist_dashboard/receptionist_dashboard.html")
 
 class PatientAppointmentListView(LoginRequiredMixin, ListView):
     """Get list of All Appointments in Receptionist Dashbaoard"""

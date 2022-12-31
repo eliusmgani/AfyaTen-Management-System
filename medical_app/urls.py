@@ -12,12 +12,10 @@ urlpatterns = [
 
 
     # admin-dashboard
-    path("admin-dashboard", admin_dashboard, name="admin-dashboard"),
+    # path("admin-dashboard", admin_dashboard, name="admin-dashboard"),
     path("practitioners", PractitonerListView.as_view(), name="practitioners"),
     path("nurses", NurseListView.as_view(), name="nurses"),
     path("receptionists", ReceptionistListView.as_view(), name="receptionists"),
-    path("patients", PatientListView.as_view(), name="patients"),
-    path("appointments", AppointmentListView.as_view(), name="appointments"),
     path("vitals", AdminVitalListView.as_view(), name="vitals"),
     path("departments", DepartmentListView.as_view(), name="departments"),
     path("specialities", SpecialityListView.as_view(), name="specialities"),
@@ -28,21 +26,25 @@ urlpatterns = [
     path("services", ServiceListView.as_view(), name="services"),
 
     #practitioner-dashboard
-    path("practitioner-dashboard", practitioner_dashboard, name="practitioner-dashboard"),
+    # path("practitioner-dashboard", practitioner_dashboard, name="practitioner-dashboard"),
     path("pratitioner-patient", PractitionerPatientListView.as_view(), name="practitioner-patient"),
 
     #nurse-dashboard
-    path("nurse-dashboard", nurse_dashboard, name="nurse-dashboard"),
+    # path("nurse-dashboard", nurse_dashboard, name="nurse-dashboard"),
     path("vital-patient", VitalPatientListView.as_view(), name="vital-patient"),
     path("vital-sign", NurseVitalListView.as_view(), name="vital-sign"),
 
     #receptionist-dashboard
-    path("receptionist-dashboard", receptionist_dashboard, name="receptionist-dashboard"),
-    path("appointment-patient", AppointmentPatientListView.as_view(), name="appointment-patient"),
+    # path("receptionist-dashboard", receptionist_dashboard, name="receptionist-dashboard"),
+    # path("appointment-patient", AppointmentPatientListView.as_view(), name="appointment-patient"),
     path("patient-appointment", PatientAppointmentListView.as_view(), name="patient-appointment"),
 
 
     #Func View
+    path("func-view-dashboard", func_view_dashboard, name="func-view-dashboard"),
+    path("patients", PatientListView.as_view(), name="patients"),
+    path("appointments", AppointmentListView.as_view(), name="appointments"),
+
     path("create-patient", CreatePatientView.as_view(), name="create-patient"),
     path("create-patient-appointment", CreatePatientAppointmentView.as_view(), name="create-patient-appointment"),
     path("patient-appointment-detail/<str:pk>", DetailPatientAppointmentView.as_view(), name="patient-appointment-detail"),
